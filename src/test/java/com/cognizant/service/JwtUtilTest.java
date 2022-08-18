@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.userdetails.User;
@@ -30,7 +31,7 @@ public class JwtUtilTest {
 	UserDetails userdetails;
 	
 	
-	@InjectMocks
+	@Autowired
 	JwtUtil jwtUtil;
 	
 	@Mock
@@ -50,7 +51,6 @@ public class JwtUtilTest {
 	public void validateTokenTest() {
 		
 		userdetails = new User("admin", "admin", new ArrayList<>());
-		when("token expired").thenReturn("30");
 		String generateToken = jwtUtil.generateToken(userdetails);
 		Boolean validateToken = jwtUtil.validateToken(generateToken);
 		assertEquals(true, validateToken);
