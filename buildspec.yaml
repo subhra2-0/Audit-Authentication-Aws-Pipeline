@@ -21,7 +21,6 @@ phases:
     commands:
     - echo Build completed on `date`
     - echo $(docker images)
-    - docker tag $IMAGE_NAME $IMAGE_URI
     - echo Pushing docker image
     - docker push $IMAGE_URI
     - echo push completed
